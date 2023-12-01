@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<div style="display: flex">
+    <br>
+    <hr>
+    <h2>POST 실습</h2>
+    <div style="display: flex">
+        <form id="post_form" style="margin-right: 20px;">
+            <h3>Get ( 일반 ) - axios</h3>
+            이름 : <input type="text" name="name">
+            <br>
+            성별: <button type="radio" value="M" name="gender">남자</button>
+            <button type="radio" value="FM" name="gender">여자</button>
+            <br>
+            나이 : <input type="text" name="age">
+            <br>
+            관심사:
+            <button type="checkbox" value="tr" name="hobby">여행</button>
+            <button type="checkbox" value="fs" name="hobby">패션</button>
+            <button type="checkbox" value="fd" name="hobby">음식</button>
+            <button type="button" onclick="POST();">POST</button>
+        </form>
+
+<script>
+    function POST() {
+        var form = document.getElementById('post_form');
+        axios.post(`/axios/postPr?name=${form.name.value}&age=${form.age.value}&gender=${form.gender.value}$hobby=${form.hobby.value}`)
+            .then((res)=>{
+                console.log( res );
+                console.log( 'postRes : ', res.data );
+            });
+    }
+
+</script>
+</div>
+</body>
+</html>
